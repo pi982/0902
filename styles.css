@@ -300,11 +300,9 @@ video {
 	/* Giảm padding và font-size mặc định */
 	padding: 10px;
 	font-size: 0.9rem; /* Giảm đáng kể */
-	margin-top: 10px;
 	border: 1px solid var(--neutral-color); /* Màu border nhất quán */
 	border-radius: 5px;
 }
-
 	#search-query:focus,
 	#report-query:focus {
 		border-color: var(--primary-color);
