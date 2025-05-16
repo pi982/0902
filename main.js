@@ -734,7 +734,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rowHeight = 35;          // chiều cao mỗi hàng là 35px
         } else {
             // Cài đặt cho màn hình nhỏ
-            headerHeight = 380;      // giảm chiều cao header cho điện thoại (ví dụ: 300px)
+            headerHeight = 350;      // giảm chiều cao header cho điện thoại (ví dụ: 300px)
             footerHeight = 30;       // giảm chiều cao footer (ví dụ: 30px)
             additionalSpacing = 10;   // giảm khoảng đệm
             rowHeight = 30;          // giảm chiều cao mỗi hàng (ví dụ: 30px)
