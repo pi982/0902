@@ -197,7 +197,7 @@ body.app-active .top-image {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100%;
+	/*height: 100%;*/
 	max-width: 900px;
 	padding: 0 10px; /* Thêm padding ngang */
 	margin-top: -50px; /* Điều chỉnh giá trị này tùy theo nhu cầu */
@@ -214,7 +214,7 @@ body.app-active .top-image {
 		position: relative;
 		/* Thêm overflow nếu nội dung có thể dài */
 		overflow-y: auto;
-		max-height: calc(100vh - 200px); /* Ví dụ giới hạn chiều cao */
+		/*max-height: calc(100vh - 200px);*/
 	}
 
 /* --- Trạng thái ẩn/hiện và animation --- */
@@ -873,5 +873,3 @@ header,
 		width: 8%;
 	}
 }
-
-
