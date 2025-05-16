@@ -557,7 +557,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Nếu offline: lưu bản ghi vào IndexedDB
             const record = {
                 id: studentId,
-                type: currentAttendanceType,
+                type: currentAttendanceType, 
                 holy: studentHoly,
                 name: studentName,
                 recordType: "single",
@@ -607,6 +607,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnQR = document.getElementById("toggle-qr");
     const btnSearch = document.getElementById("toggle-search");
     const btnReport = document.getElementById("toggle-report");
+    const btnOff = document.getElementById("toggle-off");
     const qrContainer = document.getElementById("qr-container");
     const searchContainer = document.getElementById("search-container");
     const reportContainer = document.getElementById("report-container");
@@ -616,6 +617,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnQR.classList.add("active");
         btnSearch.classList.remove("active");
         btnReport.classList.remove("active");
+        btnOff.classList.remove("active");
         document.getElementById("search-query").value = "";
         document.getElementById("search-results").innerHTML = "";
         document.getElementById("report-query").value = "";
@@ -633,6 +635,7 @@ document.addEventListener("DOMContentLoaded", function () {
         btnSearch.classList.add("active");
         btnQR.classList.remove("active");
         btnReport.classList.remove("active");
+        btnOff.classList.remove("active");
         document.getElementById("report-query").value = "";
         document.getElementById("report-results").innerHTML = "";
         document.getElementById("search-query").value = "";
@@ -658,11 +661,45 @@ document.addEventListener("DOMContentLoaded", function () {
         reportContainer.style.display = "none";
         fadeIn(searchContainer);
     });
+
+    btnOff.addEventListener("click", () => {
+        currentMode = "search"; // Hoặc bạn nếu cần xử lý riêng riêng thì có thể đặt mode mới
+        btnOff.classList.add("active");
+        btnQR.classList.remove("active");
+        btnReport.classList.remove("active");
+        btnSearch.classList.remove("active");
+        // Reset các giao diện nếu cần
+        document.getElementById("report-query").value = "";
+        document.getElementById("report-results").innerHTML = "";
+        document.getElementById("search-query").value = "";
+        document.getElementById("search-results").innerHTML = "";
+        document.querySelectorAll("#status-dropdown .status-box").forEach((el) => el.classList.remove("active"));
+        // Có thể gọi thêm hàm showStatusDropdown nếu bạn muốn dropdown xuất hiện với nút toggle-off
+        showStatusDropdown(btnOff);
+        // Nếu đang quét QR thì dừng
+        if (isScanning) {
+            html5QrCode.stop()
+                .then(() => {
+                    isScanning = false;
+                    console.log("Camera đã được tắt khi chuyển sang tìm kiếm (toggle-off).");
+                })
+                .catch((error) => {
+                    console.error("Lỗi khi dừng camera:", error);
+                });
+        }
+        // Ẩn container QR và báo cáo
+        qrContainer.style.display = "none";
+        reportContainer.style.display = "none";
+        // Hiển thị giao diện tìm kiếm
+        fadeIn(searchContainer);
+    });
+
     btnReport.addEventListener("click", () => {
         currentMode = "report";
         btnReport.classList.add("active");
         btnQR.classList.remove("active");
         btnSearch.classList.remove("active");
+        btnOff.classList.remove("active");
         hideStatusDropdown();
         document.getElementById("search-query").value = "";
         document.getElementById("search-results").innerHTML = "";
@@ -903,6 +940,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     attendanceDescription = " khác ";
                 }
 
+                // Nếu nút toggle-off (xin vắng) đang active thì thêm mô tả
+                if (btnOff.classList.contains("active")) {
+                    attendanceDescription = " xin vắng " + attendanceDescription;
+                }
+
                 const interactiveElements = document.querySelectorAll("button, input");
                 interactiveElements.forEach(el => el.disabled = true);
                 const confirmBtn = this;
@@ -917,7 +959,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     return;
                 }
 
-                if (!confirm("Xác nhận điểm danh" + attendanceDescription + selectedIds.length + " thiếu nhi đã chọn?")) {
+                if (!confirm("Xác nhận" + attendanceDescription + selectedIds.length + " thiếu nhi đã chọn?")) {
                     interactiveElements.forEach(el => el.disabled = false);
                     confirmBtn.innerHTML = originalText;
                     return;
@@ -926,18 +968,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Tạo mảng các bản ghi điểm danh
                 const records = selectedIds.map(studentId => {
                     const stu = selectedStudents[studentId];
-                    return {
+                    // Khởi tạo record với các trường cơ bản
+                    let record = {
                         id: studentId,
                         type: currentAttendanceType,  // ví dụ "di-le", "di-hoc", "khac"
                         holy: stu.holyName || "",
                         name: stu.fullName || ""
                     };
+                    // Nếu nút toggle-off đang active, thêm trường extra để thông báo "xin-vang"
+                    if (btnOff.classList.contains("active")) {
+                        record.extra = "xin-vang";
+                    }
+                    return record;
                 });
 
                 // Nếu có kết nối mạng: gửi batch dữ liệu online, nếu không, lưu offline từng record.
                 try {
                     if (navigator.onLine) {
-                        // Nếu online: gửi dữ liệu qua fetch (với mode no-cors để tránh preflight)
+                        // Gửi dữ liệu qua fetch với mode no-cors để tránh preflight
                         await fetch(webAppUrl, {
                             method: "POST",
                             mode: "no-cors",
@@ -953,9 +1001,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         };
                         showModal("Đã lưu điểm danh" + attendanceDescription + selectedIds.length + " thiếu nhi Offline.", "normal");
                         saveAttendanceRecord(batchRecord);
-
                     }
-
 
                     // Reset giao diện
                     document.getElementById("search-query").value = "";
@@ -971,7 +1017,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     confirmBtn.innerHTML = originalText;
                 }
             });
-
         }
     }
     // ---------------------
