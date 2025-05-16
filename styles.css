@@ -18,7 +18,7 @@ html {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	height: 100vh;
 	background: var(--card-bg);
 	/* Đặt kích thước font gốc để rem dễ tính toán hơn (tùy chọn) */
 	/* font-size: 10px; */ /* Nếu bật dòng này, 1rem = 10px */
@@ -26,6 +26,7 @@ html {
 
 body {
 	width: 100%;
+	height: 100vh;
 	font-family: "Roboto", sans-serif;
 	background-color: var(--card-bg);
 	color: var(--text-color);
@@ -33,7 +34,6 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	min-height: 100vh;
 	padding: 0;
 	/*overflow-y: auto;*/
 	-webkit-overflow-scrolling: touch;
@@ -197,10 +197,10 @@ body.app-active .top-image {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	/*height: 100%;*/
+	height: 100%;
 	max-width: 900px;
 	padding: 0 10px; /* Thêm padding ngang */
-	margin-top: -50px; /* Điều chỉnh giá trị này tùy theo nhu cầu */
+
 }
 
 	.function-container .container {
@@ -212,9 +212,10 @@ body.app-active .top-image {
 		padding: 10px; /* Giảm padding */
 		transition: opacity 0.5s ease;
 		position: relative;
+		top: -40px; /* Điều chỉnh giá trị này để container di chuyển lên trên */
 		/* Thêm overflow nếu nội dung có thể dài */
 		overflow-y: auto;
-		/*max-height: calc(100vh - 200px);*/
+		max-height: calc(100vh - 200px); /* Ví dụ giới hạn chiều cao */
 	}
 
 /* --- Trạng thái ẩn/hiện và animation --- */
@@ -643,6 +644,7 @@ header,
 @media (max-width: 600px) {
 	body {
 		font-size: 0.95rem; /* Có thể giảm nhẹ font gốc trên mobile */
+
 	}
 
 	.top-image {
@@ -663,8 +665,8 @@ header,
 		height: 45px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
 	}
 	.nav-icon {
-		width: 20px;
-		height: 20px;
+		width: 25px;
+		height: 25px;
 	}
 
 	.nav-label {
