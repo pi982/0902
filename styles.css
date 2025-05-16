@@ -15,7 +15,6 @@
 
 /* --- Thiết lập cơ bản cho HTML và Body --- */
 html {
-	height:100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
@@ -23,7 +22,6 @@ html {
 	/* Đặt kích thước font gốc để rem dễ tính toán hơn (tùy chọn) */
 	/* font-size: 10px; */ /* Nếu bật dòng này, 1rem = 10px */
 }
-
 body {
 	width: 100%;
 	min-height: 100vh;
