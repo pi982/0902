@@ -75,6 +75,7 @@ body.app-active .top-image {
 	left: 0; /* Căn trái */
 	width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
 	height: 60px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
+	padding-bottom: env(safe-area-inset-bottom);
 	background-color: var(--light-white);
 	display: flex;
 	justify-content: space-around; /* Phân bố đều các icon */
