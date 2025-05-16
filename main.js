@@ -688,6 +688,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         }
         // Ẩn container QR và báo cáo
+        searchContainer.style.display = "none";
         qrContainer.style.display = "none";
         reportContainer.style.display = "none";
         // Hiển thị giao diện tìm kiếm
