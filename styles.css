@@ -15,10 +15,10 @@
 
 /* --- Thiết lập cơ bản cho HTML và Body --- */
 html {
+	height:100%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	height: 100vh;
 	background: var(--card-bg);
 	/* Đặt kích thước font gốc để rem dễ tính toán hơn (tùy chọn) */
 	/* font-size: 10px; */ /* Nếu bật dòng này, 1rem = 10px */
@@ -26,7 +26,7 @@ html {
 
 body {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 	font-family: "Roboto", sans-serif;
 	background-color: var(--card-bg);
 	color: var(--text-color);
@@ -644,6 +644,9 @@ header,
 @media (max-width: 600px) {
 	body {
 		font-size: 0.95rem; /* Có thể giảm nhẹ font gốc trên mobile */
+		width:100%;
+		height:100%;
+		margin-bottom: 40px;
 
 	}
 
