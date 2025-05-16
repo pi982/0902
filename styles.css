@@ -208,8 +208,6 @@ body.app-active .top-image {
 		border-radius: 8px;
 		padding: 10px; /* Giảm padding */
 		transition: opacity 0.5s ease;
-		position: relative;
-		top: -40px; /* Điều chỉnh giá trị này để container di chuyển lên trên */
 		/* Thêm overflow nếu nội dung có thể dài */
 		overflow-y: auto;
 		max-height: calc(100vh - 200px); /* Ví dụ giới hạn chiều cao */
