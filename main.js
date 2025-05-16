@@ -1119,8 +1119,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <th class="col-20">Tên Thánh</th>
             <th class="col-44">Họ và Tên</th>
             <th>Lớp</th>
-            <th class="col-12">Đi lễ</th>
-            <th class="col-12">Đi học</th>
+            <th class="col-12">Lễ</th>
+            <th class="col-12">Học</th>
             <th class="col-12">Khác</th>
         </tr>
         </thead>
