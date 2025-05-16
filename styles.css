@@ -580,8 +580,7 @@ th {
 }
 
 .top-image,
-header,
-.mode-toggle {
+header {
 	position: relative;
 	z-index: 10;
 }
