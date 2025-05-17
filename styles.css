@@ -283,7 +283,7 @@ video {
 	width: 100%; /* Input chiếm hết chiều rộng tại vị trí của nó */
 	height: 35px;
 	padding: 10px;
-	margin-top: 10px;
+	margin-top: 0;
 	margin-bottom: 10px;
 	font-size: 1rem;
 	border: 1px solid var(--neutral-color);
@@ -296,7 +296,7 @@ video {
 	/* Bỏ width: 100%; để giữ kích thước button nhỏ gọn */
 	height: 35px;
 	padding: 0 30px;
-	margin-top: 10px;
+	margin-top: 0;
 	margin-bottom: 10px;
 	background-color: var(--primary-color);
 	color: #fff;
@@ -306,7 +306,6 @@ video {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-top: 10px; /* Nếu cần giữ margin top đồng nhất với input */
 }
 
 	#search-button:hover,
@@ -354,7 +353,7 @@ video {
 	max-width: 100%;
 	overflow-x: auto;
 	-webkit-overflow-scrolling: touch;
-	margin-top: 15px;
+	margin-top: 0;
 	border: 1px solid var(--neutral-color); /* Thêm border cho container */
 	border-radius: 5px;
 	overflow: hidden;
@@ -366,7 +365,6 @@ table {
 	border-collapse: collapse;
 	background-color: #fff;
 	font-size: 0.9rem; /* Giảm nhẹ font chữ bảng */
-	margin-top: 10px; /* Bỏ margin khi đã có ở .table-responsive */
 }
 
 th,
@@ -668,7 +666,8 @@ header {
 	body.app-active .top-image {
 		width: 70px; /* <-- Kích thước nhỏ mong muốn (mobile) */
 		height: 70px; /* <-- Kích thước nhỏ mong muốn (mobile) */
-		margin: 40px 0; /* Điều chỉnh margin nếu cần */
+		margin-top: 40px;
+		margin-bottom: 30px;
 	}
 
 	.mode-toggle {
@@ -753,16 +752,10 @@ header {
 			font-size: 1rem;
 		}
 
-	/* Điều chỉnh bảng */
-	.table-responsive {
-		margin-top: 10px;
-	}
-
 	table {
 		table-layout: fixed;
 		width: 100%;
 		font-size: 0.75rem; /* Giảm font bảng thêm */
-		margin-top: 10px;
 	}
 
 	th, td {
