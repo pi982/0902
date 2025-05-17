@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ---------------------
     document.getElementById("login-form").addEventListener("submit", function (e) {
         e.preventDefault();
+        this.blur();
         const account = document.getElementById("login-account").value.trim();
         const password = document.getElementById("login-password").value.trim();
 
