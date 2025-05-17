@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             btnReport.click();
         }, 1);
+
     } else {
         // Người dùng chưa đăng nhập, hiển thị form đăng nhập
         document.getElementById("login-container").style.display = "block";
@@ -58,11 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // Định nghĩa thời gian hiển thị dựa vào loại thông báo
         let displayDuration;
         if (type === "status") {
-            displayDuration = 3500;
+            displayDuration = 3000;
         } else if (type === "error") {
-            displayDuration = 2500;
+            displayDuration = 2000;
         } else {
-            displayDuration = 1500;
+            displayDuration = 1000;
         }
 
         // Sau khi thông báo được hiển thị, ẩn và xử lý thông báo kế tiếp
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Đợi một chút (ví dụ 500ms) trước khi hiển thị thông báo tiếp theo để tránh hiện tượng quá chồng
             setTimeout(() => {
                 processQueue();
-            }, 200);
+            }, 100);
         }, displayDuration);
     }
 
@@ -134,15 +135,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const webAppUrl =
         "https://script.google.com/macros/s/AKfycbxyZkkL3uRTcLVUbcxytOKiKfWOAow_hKuwHCW6FcHVSAXTv38ZnYfnW4sCXscdJ2oN/exec";
     let currentAttendanceType = "di-le"; // Mặc định
-    let currentMode = "qr"; // Có thể là "qr", "search", "report"
+    let currentMode = "report"; // Có thể là "qr", "search", "report"
     const searchCache = new Map();
     let searchData = [];
     let currentPage = 1;
     let reportData = [];
     let currentReportPage = 1;
     let selectedStudents = {};
-
-
 
     // ========== Offline Helper Functions ==========
     function openAttendanceDB() {
@@ -464,11 +463,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function startCamera(loadingElem) {
         const videoConstraints = { facingMode: "environment" };
         const qrConfig = {
-            fps: 10,
+            fps: 15,
             videoConstraints: {
                 facingMode: "environment",
-                width: { ideal: 1920 },
-                height: { ideal: 1080 }
+                width: { min: 1280, ideal: 1920 },
+                height: { min: 720, ideal: 1080 }
             }
         };
         html5QrCode
@@ -616,6 +615,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchContainer = document.getElementById("search-container");
     const reportContainer = document.getElementById("report-container");
 
+    const searchInput = document.getElementById("search-query");
+    const reportInput = document.getElementById("report-query");
+    const searchBtn = document.getElementById("search-button");
+    const reportBtn = document.getElementById("report-button");
+
+    if (searchInput && searchBtn) {
+        searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault(); // Ngăn submit mặc định nếu trong form
+                searchBtn.click();
+            }
+        });
+    }
+
+    if (reportInput && reportBtn) {
+        reportInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                reportBtn.click();
+            }
+        });
+    }
+
+
     btnQR.addEventListener("click", () => {
         currentMode = "qr";
         btnQR.classList.add("active");
@@ -677,7 +700,9 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("report-results").innerHTML = "";
         document.getElementById("search-query").value = "";
         document.getElementById("search-results").innerHTML = "";
-        document.querySelectorAll("#status-dropdown .status-box").forEach((el) => el.classList.remove("active"));
+        document
+            .querySelectorAll("#status-dropdown .status-box")
+            .forEach((el) => el.classList.remove("active"));
         // Có thể gọi thêm hàm showStatusDropdown nếu bạn muốn dropdown xuất hiện với nút toggle-off
         showStatusDropdown(btnOff);
         // Nếu đang quét QR thì dừng
@@ -692,8 +717,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         }
         // Ẩn container QR và báo cáo
-        searchContainer.style.display = "none";
         qrContainer.style.display = "none";
+        searchContainer.style.display = "none";
         reportContainer.style.display = "none";
         // Hiển thị giao diện tìm kiếm
         fadeIn(searchContainer);
@@ -739,7 +764,7 @@ document.addEventListener("DOMContentLoaded", function () {
             rowHeight = 35;          // chiều cao mỗi hàng là 35px
         } else {
             // Cài đặt cho màn hình nhỏ
-            headerHeight = 350;      // giảm chiều cao header cho điện thoại (ví dụ: 300px)
+            headerHeight = 320;      // giảm chiều cao header cho điện thoại (ví dụ: 300px)
             footerHeight = 30;       // giảm chiều cao footer (ví dụ: 30px)
             additionalSpacing = 10;   // giảm khoảng đệm
             rowHeight = 30;          // giảm chiều cao mỗi hàng (ví dụ: 30px)
@@ -954,7 +979,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 interactiveElements.forEach(el => el.disabled = true);
                 const confirmBtn = this;
                 const originalText = confirmBtn.innerHTML;
-                confirmBtn.innerHTML = `<span class="spinner spinner-small" style="margin-right: 6px;"></span>Đang gửi...`;
+                confirmBtn.innerHTML = `<span class="spinner spinner-small" style="margin-right: 6px;"></span>Đang gửi..., "status"`;
 
                 const selectedIds = Object.keys(selectedStudents);
                 if (selectedIds.length === 0) {
