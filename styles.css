@@ -315,6 +315,7 @@ video {
 	border: none;
 	cursor: pointer;
 	margin-top: 10px;
+	margin-bottom: 10px;
 	transition: background-color 0.3s ease, transform 0.2s ease;
 	/* Thêm min-height để đảm bảo dễ bấm */
 	display: flex; /* Cho phép căn giữa icon/spinner nếu có */
@@ -653,7 +654,7 @@ header {
 
 	.mode-toggle {
 		width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
-		height: 48px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
+		height: 45px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
 	}
 	.nav-icon {
 		width: 22px;
