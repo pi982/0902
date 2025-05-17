@@ -646,9 +646,9 @@ header {
 	}
 
 	body.app-active .top-image {
-		width: 80px; /* <-- Kích thước nhỏ mong muốn (mobile) */
-		height: 80px; /* <-- Kích thước nhỏ mong muốn (mobile) */
-		margin: 30px 0; /* Điều chỉnh margin nếu cần */
+		width: 70px; /* <-- Kích thước nhỏ mong muốn (mobile) */
+		height: 70px; /* <-- Kích thước nhỏ mong muốn (mobile) */
+		margin: 40px 0; /* Điều chỉnh margin nếu cần */
 	}
 
 	.mode-toggle {
@@ -712,6 +712,9 @@ header {
 	}
 
 	/* Kích thước font trong dropdown và modal */
+	.modal{
+		padding: 40px;
+	}
 	.modal-content {
 		padding: 6px 10px;
 	}
