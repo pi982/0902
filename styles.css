@@ -442,7 +442,6 @@ th {
 	/* Bạn cũng có thể thêm các thuộc tính khác như font-weight, color,... */
 }
 
-
 /* --- Nút xác nhận điểm danh --- */
 .confirm-attendance-btn {
 	background: var(--primary-color);
@@ -457,6 +456,7 @@ th {
 	align-items: center;
 	justify-content: center;
 	margin-top: 13px;
+	margin-bottom: 10px;
 }
 
 	.confirm-attendance-btn:hover {
