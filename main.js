@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 // Hiển thị thông báo “Đang gửi dữ liệu...” có spinner
-                showModal('<span class="spinner"></span>\nĐang gửi dữ liệu điểm danh Offline...',"info");
+                showModal('<span class="spinner"></span>\nĐang gửi dữ liệu điểm danh Offline...',"status");
 
                 // Gửi payload chung dạng JSON đến server
                 fetch(webAppUrl, {
@@ -999,7 +999,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 interactiveElements.forEach(el => el.disabled = true);
                 const confirmBtn = this;
                 const originalText = confirmBtn.innerHTML;
-                confirmBtn.innerHTML = `<span class="spinner spinner-small" style="margin-right: 6px;"></span>Đang gửi..., "status"`;
+                confirmBtn.innerHTML = `<span class="spinner spinner-small" style="margin-right: 6px;"></span>Đang gửi...`;
 
                 const selectedIds = Object.keys(selectedStudents);
                 if (selectedIds.length === 0) {
