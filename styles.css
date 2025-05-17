@@ -187,7 +187,6 @@ body.app-active .top-image {
 
 	#status-dropdown .status-box.active {
 		background-color: var(--primary-color); /* Màu nền khi active */
-		color: #fff;
 	}
 
 	#status-dropdown .status-box:hover {
