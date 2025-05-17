@@ -275,7 +275,6 @@ video {
 	object-fit: cover;
 }
 
-
 /* --- Style cho Search & Report --- */
 /* Chỉ áp dụng cho input (query) */
 #search-query,
@@ -284,7 +283,7 @@ video {
 	height: 35px;
 	padding: 10px;
 	margin-top: 0;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	font-size: 1rem;
 	border: 1px solid var(--neutral-color);
 	border-radius: 5px;
@@ -297,7 +296,7 @@ video {
 	height: 35px;
 	padding: 0 30px;
 	margin-top: 0;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 	background-color: var(--primary-color);
 	color: #fff;
 	border: none;
