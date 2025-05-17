@@ -1042,7 +1042,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({ records: records })
                         });
-                        showModal("Điểm danh" + attendanceDescription + selectedIds.length + " thiếu nhi thành công.", "success");
+                        showModal("Điểm danh" + attendanceDescription + selectedIds.length + " thiếu nhi.", "success");
                     } else {
                         const batchRecord = {
                             timestamp: Date.now(), // Thêm thuộc tính bắt buộc theo keyPath
