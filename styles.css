@@ -118,6 +118,15 @@ body.app-active .top-image {
 	filter: none; /* Hoặc bạn có thể dùng filter tinh chỉnh để đạt hiệu ứng mong muốn */
 }
 
+/* Styles cho indicator – thanh ngang màu xanh */
+.indicator {
+	position: absolute;
+	top: 0;
+	left: 0; /* Ban đầu nằm dưới nút đầu tiên */
+	width: 25%; /* Bằng 1/4 chiều rộng */
+	height: 3px; /* Độ dày của thanh indicator */
+	background-color: var(--primary-color);
+}
 
 .student-mesage {
 	/* Giảm font size */
