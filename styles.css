@@ -95,7 +95,9 @@ body.app-active .top-image {
 .nav-icon {
 	width: 25px;
 	height: 25px;
+	/* Đặt filter mặc định (ví dụ: hiển thị ở dạng grayscale) */
 	filter: grayscale(100%) brightness(70%);
+	/*transition: filter 0.3s ease;*/
 }
 
 .nav-label {
@@ -128,6 +130,7 @@ body.app-active .top-image {
 	background-color: var(--primary-color);
 }
 
+
 .student-mesage {
 	/* Giảm font size */
 	font-size: 1rem;
@@ -141,7 +144,6 @@ body.app-active .top-image {
 	opacity: 0;
 	visibility: hidden; /* Thêm visibility để ẩn hoàn toàn */
 	transform: translateY(10px); /* Đi xuống 10px để ẩn */
-	transition: opacity 0.8s ease, transform 0.8s ease, visibility 0.8s ease;
 	position: absolute;
 	background-color: var(--card-bg); /* Đổi thành màu nền thẻ */
 	border: 1px solid var(--neutral-color); /* Thêm border nhẹ */
@@ -162,10 +164,6 @@ body.app-active .top-image {
 		pointer-events: auto;
 	}
 
-.fade-out { /* Class này có vẻ không cần thiết nếu dùng opacity/visibility */
-	opacity: 0;
-	visibility: hidden;
-}
 
 #status-dropdown .status-box {
 	/* Giảm padding và font-size */
@@ -215,34 +213,11 @@ body.app-active .top-image {
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Giảm nhẹ shadow */
 		border-radius: 8px;
 		padding: 10px; /* Giảm padding */
-		transition: opacity 0.5s ease;
 		/* Thêm overflow nếu nội dung có thể dài */
 		overflow-y: auto;
 		max-height: calc(100vh - 200px); /* Ví dụ giới hạn chiều cao */
 	}
 
-/* --- Trạng thái ẩn/hiện và animation --- */
-.hidden {
-	display: none;
-}
-
-.visible {
-	display: block;
-}
-
-.fade-in {
-	animation: fadeIn 0.5s ease forwards; /* Thêm forwards để giữ trạng thái cuối */
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-
-	to {
-		opacity: 1;
-	}
-}
 
 /* --- Fullscreen QR Container --- */
 #qr-container.fullscreen {
@@ -326,7 +301,6 @@ video {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -423,7 +397,6 @@ th {
 	border: 1px solid var(--neutral-color);
 	border-radius: 4px;
 	cursor: pointer;
-	transition: background-color 0.2s ease, border-color 0.2s ease;
 	margin: auto;
 	display: block;
 	vertical-align: middle; /* Thêm để căn chỉnh tốt hơn nếu inline */
@@ -504,7 +477,6 @@ th {
 	align-items: flex-start;
 	opacity: 0;
 	visibility: hidden;
-	transition: opacity 0.3s ease, visibility 0.2s ease;
 	z-index: 1000;
 	padding: 30px;
 }
@@ -706,7 +678,7 @@ header {
 	}
 
 	.nav-label {
-		font-size: 0.55rem;
+		font-size: 0.58rem;
 		margin-top: 3px; /* Khoảng cách giữa icon và chữ */
 	}
 
