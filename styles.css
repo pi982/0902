@@ -187,6 +187,7 @@ body.app-active .top-image {
 
 	#status-dropdown .status-box.active {
 		background-color: var(--primary-color); /* Màu nền khi active */
+		color: #fff;
 	}
 
 	#status-dropdown .status-box:hover {
@@ -208,9 +209,11 @@ body.app-active .top-image {
 	.function-container .container {
 		flex: 1;
 		width: 100%; /* Nên để width tự động khi flex: 1 */
+		/* 
 		background-color: var(--card-bg);
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Giảm nhẹ shadow */
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 		border-radius: 8px;
+		*/
 		padding: 10px; /* Giảm padding */
 		/* Thêm overflow nếu nội dung có thể dài */
 		overflow-y: auto;
@@ -442,6 +445,7 @@ th {
 	/* Bạn cũng có thể thêm các thuộc tính khác như font-weight, color,... */
 }
 
+
 /* --- Nút xác nhận điểm danh --- */
 .confirm-attendance-btn {
 	background: var(--primary-color);
@@ -602,9 +606,12 @@ header {
 	max-width: 900px;
 	padding: 20px 10px;
 	text-align: center;
+	/*
 	background: var(--card-bg);
 	border-radius: 8px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	*/
+
 	transform: translate(-50%, -50%);
 }
 
