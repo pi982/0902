@@ -520,11 +520,9 @@ th {
 	}
 
 	.modal-content.status {
-		color: var(--warning-color);
+		color: var(--text-color);
 		/* border-left: 5px solid var(--error-color); */
 	}
-
-
 
 .modal-close {
 	position: absolute;
