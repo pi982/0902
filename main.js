@@ -608,6 +608,23 @@ document.addEventListener("DOMContentLoaded", function () {
     // ---------------------
     // EVENT LISTENERS CHUYỂN ĐỔI GIAO DIỆN
     // ---------------------
+    
+    const toggleButtons = document.querySelectorAll(".toggle-button");
+    const indicator = document.querySelector(".indicator");
+
+    // Giả sử có 4 nút, mỗi nút chiếm 25% chiều rộng
+    toggleButtons.forEach((button, index) => {
+        button.addEventListener("click", function () {
+            // Xóa active khỏi tất cả nút
+            toggleButtons.forEach(btn => btn.classList.remove("active"));
+            // Thêm active vào nút được nhấn
+            this.classList.add("active");
+
+            // Cập nhật vị trí indicator
+            indicator.style.left = (index * 25) + "%";
+        });
+    });
+    
     const btnQR = document.getElementById("toggle-qr");
     const btnSearch = document.getElementById("toggle-search");
     const btnReport = document.getElementById("toggle-report");
