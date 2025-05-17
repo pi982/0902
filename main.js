@@ -623,7 +623,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (searchInput && searchBtn) {
         searchInput.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
-                e.preventDefault(); // Ngăn submit mặc định nếu trong form
+                e.preventDefault();
+                this.blur();
                 searchBtn.click();
             }
         });
@@ -633,6 +634,7 @@ document.addEventListener("DOMContentLoaded", function () {
         reportInput.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
                 e.preventDefault();
+                this.blur();
                 reportBtn.click();
             }
         });
