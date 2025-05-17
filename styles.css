@@ -22,6 +22,7 @@ html {
 	/* Đặt kích thước font gốc để rem dễ tính toán hơn (tùy chọn) */
 	/* font-size: 10px; */ /* Nếu bật dòng này, 1rem = 10px */
 }
+
 body {
 	width: 100%;
 	font-family: "Roboto", sans-serif;
@@ -38,14 +39,14 @@ body {
 	line-height: 1.5; /* Cải thiện khả năng đọc */
 }
 
-*{
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 }
 
 /* --- Hình ảnh trên cùng --- */
-	.top-image {
+.top-image {
 	/* Giảm kích thước mặc định */
 	width: 150px;
 	height: 150px;
@@ -92,10 +93,11 @@ body.app-active .top-image {
 }
 
 .nav-icon {
-	width: 28px;
-	height: 28px;
+	width: 25px;
+	height: 25px;
 	/* Đặt filter mặc định (ví dụ: hiển thị ở dạng grayscale) */
 	filter: grayscale(100%) brightness(70%);
+	/*transition: filter 0.3s ease;*/
 }
 
 .nav-label {
@@ -104,6 +106,7 @@ body.app-active .top-image {
 	margin-top: 3px; /* Khoảng cách giữa icon và chữ */
 	color: var(--text-color);
 }
+
 .toggle-button:hover {
 	/* Giảm nhẹ hiệu ứng scale */
 	transform: scale(1.02);
@@ -196,7 +199,6 @@ body.app-active .top-image {
 	height: 100%;
 	max-width: 900px;
 	padding: 0 10px; /* Thêm padding ngang */
-
 }
 
 	.function-container .container {
@@ -291,42 +293,76 @@ video {
 
 
 /* --- Style cho Search & Report --- */
+/* Chỉ áp dụng cho input (query) */
 #search-query,
-#search-button,
-#report-query,
-#report-button {
-	width: 100%;
-	/* Giảm padding và font-size mặc định */
+#report-query {
+	width: 100%; /* Input chiếm hết chiều rộng tại vị trí của nó */
+	height: 35px;
 	padding: 10px;
 	margin-top: 10px;
-	font-size: 0.9rem; /* Giảm đáng kể */
-	border: 1px solid var(--neutral-color); /* Màu border nhất quán */
+	margin-bottom: 10px;
+	font-size: 0.9rem;
+	border: 1px solid var(--neutral-color);
 	border-radius: 5px;
 }
-	#search-query:focus,
-	#report-query:focus {
-		border-color: var(--primary-color);
-		box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Thêm hiệu ứng focus */
-	}
 
+/* Áp dụng cho button */
 #search-button,
 #report-button {
+	/* Bỏ width: 100%; để giữ kích thước button nhỏ gọn */
+	height: 35px;
+	padding: 0 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	background-color: var(--primary-color);
 	color: #fff;
 	border: none;
+	border-radius: 5px;
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease;
-	/* Thêm min-height để đảm bảo dễ bấm */
-	display: flex; /* Cho phép căn giữa icon/spinner nếu có */
+	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-top: 10px; /* Nếu cần giữ margin top đồng nhất với input */
 }
 
 	#search-button:hover,
 	#report-button:hover {
 		background-color: var(--primary-dark);
-		transform: scale(1.02); /* Giữ nguyên hoặc bỏ nếu không cần */
+		transform: scale(1.02);
 	}
+
+#search-query:focus,
+#report-query:focus {
+	border-color: var(--primary-color);
+	box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.input-group {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+
+	.input-group input {
+		flex: 1; /* Input mở rộng chiếm không gian còn lại */
+		margin-top: 0; /* Bỏ margin top nếu bạn muốn căn chỉnh theo hàng */
+	}
+
+	.input-group button {
+		margin-left: 5px; /* Khoảng cách nhỏ giữa input và button */
+		margin-top: 0; /* Bỏ margin top để căn hàng */
+		width: auto; /* Đảm bảo button không bị mở rộng */
+	}
+
+
+	.input-group button img {
+		width: 20px;
+		height: 20px;
+		display: block;
+		filter: brightness(0) invert(1);
+	}
+
 
 /* --- Bảng (Table) --- */
 /* Bọc table trong div.table-responsive */
@@ -504,6 +540,7 @@ th {
 		color: var(--text-color);
 		/* border-left: 5px solid var(--error-color); */
 	}
+
 	.modal-content.status {
 		color: var(--warning-color);
 		/* border-left: 5px solid var(--error-color); */
@@ -635,7 +672,7 @@ header {
 @media (max-width: 600px) {
 	body {
 		font-size: 0.95rem; /* Có thể giảm nhẹ font gốc trên mobile */
-		width:100%;
+		width: 100%;
 	}
 
 	.top-image {
@@ -648,13 +685,14 @@ header {
 	body.app-active .top-image {
 		width: 70px; /* <-- Kích thước nhỏ mong muốn (mobile) */
 		height: 70px; /* <-- Kích thước nhỏ mong muốn (mobile) */
-		margin: 30px 0; /* Điều chỉnh margin nếu cần */
+		margin: 40px 0; /* Điều chỉnh margin nếu cần */
 	}
 
 	.mode-toggle {
 		width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
-		height: 45px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
+		height: 48px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
 	}
+
 	.nav-icon {
 		width: 22px;
 		height: 22px;
@@ -669,6 +707,7 @@ header {
 		max-width: 100%;
 		padding: 0 16px; /* Giữ padding ngang */
 	}
+
 	.login-container {
 		max-width: 100%;
 		padding: 0 10px; /* Giữ padding ngang */
@@ -696,9 +735,16 @@ header {
 		}
 
 	#search-query,
+	#report-query {
+		height: 30px;
+	}
+
 	#search-button,
-	#report-query,
-	#report-button,
+	#report-button {
+		height: 30px;
+		padding: 0 20px;
+	}
+
 	.login-container input,
 	.login-container button {
 		/* Đảm bảo font đủ lớn để đọc */
@@ -713,7 +759,7 @@ header {
 
 	/* Kích thước font trong dropdown và modal */
 	.modal{
-		padding: 30px;
+		padding: 40px;
 	}
 	.modal-content {
 		padding: 6px 10px;
@@ -730,7 +776,7 @@ header {
 	}
 
 	table {
-		table-layout:fixed;
+		table-layout: fixed;
 		width: 100%;
 		font-size: 0.75rem; /* Giảm font bảng thêm */
 		margin-top: 10px;
@@ -756,7 +802,7 @@ header {
 	}
 
 	#search-results th:nth-child(1),
-	#search-results td:nth-child(1){
+	#search-results td:nth-child(1) {
 		display: none;
 	}
 	/* Đặt lại width cho các cột còn lại theo lớp đã gán cho báo cáo */
@@ -790,8 +836,6 @@ header {
 	#search-results th.col-14, #search-results td.col-14 {
 		width: 11.5% !important;
 	}
-
-
 
 	.pagination-btn {
 		font-size: 0.6rem;
