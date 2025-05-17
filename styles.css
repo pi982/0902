@@ -697,7 +697,7 @@ header {
 
 	.mode-toggle {
 		width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
-		height: 50px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
+		height: 52px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
 	}
 
 	.nav-icon {
