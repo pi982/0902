@@ -75,7 +75,7 @@ body.app-active .top-image {
 	left: 0; /* Căn trái */
 	width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
 	height: 60px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
-	background-color: var(--text-color);
+	background-color: var(--light-white);
 	display: flex;
 	justify-content: space-around; /* Phân bố đều các icon */
 	align-items: center;
@@ -95,14 +95,14 @@ body.app-active .top-image {
 .nav-icon {
 	width: 25px;
 	height: 25px;
-	filter: brightness(0) invert(1);
+	filter: grayscale(100%) brightness(70%);
 }
 
 .nav-label {
 	display: block;
 	font-size: 0.75rem;
 	margin-top: 3px; /* Khoảng cách giữa icon và chữ */
-	color: var(--card-bg);
+	color: var(--text-color);
 }
 
 .toggle-button:hover {
@@ -688,12 +688,12 @@ header {
 
 	.mode-toggle {
 		width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
-		height: 48px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
+		height: 50px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
 	}
 
 	.nav-icon {
-		width: 22px;
-		height: 22px;
+		width: 25px;
+		height: 25px;
 	}
 
 	.nav-label {
