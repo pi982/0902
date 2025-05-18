@@ -480,7 +480,6 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch((err) => {
                 showModal("Không truy cập được camera!", "error");
-                if (loadingElem) loadingElem.style.display = "flex";
                 console.error("Lỗi khi khởi động camera với facingMode: 'environment':", err);
                 // Fallback: nếu không tìm được camera theo constraint, thử khởi động mặc định.
                 html5QrCode
@@ -493,7 +492,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     .catch((fallbackErr) => {
                         console.error("Fallback: Lỗi khi khởi động camera mặc định:", fallbackErr);
                         showModal("Không truy cập được camera!", "error");
-                        if (loadingElem) loadingElem.style.display = "flex";
                     });
             });
     }
