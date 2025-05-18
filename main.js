@@ -479,6 +479,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Camera bắt đầu quét mã QR với facingMode: 'environment'.");
             })
             .catch((err) => {
+                showModal("Không truy cập được camera!", "error");
+                if (loadingElem) loadingElem.style.display = "flex";
                 console.error("Lỗi khi khởi động camera với facingMode: 'environment':", err);
                 // Fallback: nếu không tìm được camera theo constraint, thử khởi động mặc định.
                 html5QrCode
@@ -491,6 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .catch((fallbackErr) => {
                         console.error("Fallback: Lỗi khi khởi động camera mặc định:", fallbackErr);
                         showModal("Không truy cập được camera!", "error");
+                        if (loadingElem) loadingElem.style.display = "flex";
                     });
             });
     }
@@ -500,10 +503,6 @@ document.addEventListener("DOMContentLoaded", function () {
         qrContainer.style.display = "block";
         qrContainer.classList.add("fullscreen");
         const loadingElem = document.querySelector("#qr-scanner .loading");
-        if (loadingElem) {
-            loadingElem.style.display = "flex";
-            loadingElem.textContent = "Không truy cập được, vui lòng kiểm tra camera!";
-        }
         if (isScanning) {
             html5QrCode
                 .stop()
