@@ -220,7 +220,6 @@ body.app-active .top-image {
 		max-height: calc(100vh - 200px); /* Ví dụ giới hạn chiều cao */
 	}
 
-
 /* --- Fullscreen QR Container --- */
 #qr-container.fullscreen {
 	position: fixed;
@@ -573,7 +572,7 @@ th {
 	}
 }
 
-.top-image{
+.top-image {
 	position: relative;
 	z-index: 10;
 }
@@ -655,7 +654,7 @@ th {
 
 	.mode-toggle {
 		width: 100%; /* Chiếm toàn bộ chiều rộng màn hình */
-		height: 52px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
+		height: 60px; /* Chiều cao phù hợp, bạn có thể điều chỉnh */
 	}
 
 	.nav-icon {
@@ -666,6 +665,8 @@ th {
 	.nav-label {
 		font-size: 0.58rem;
 		margin-top: 3px; /* Khoảng cách giữa icon và chữ */
+		margin-bottom: 10px;
+		
 	}
 
 	.function-container {
@@ -702,12 +703,14 @@ th {
 	#search-query,
 	#report-query {
 		height: 35px;
+		margin-bottom: 5px;
 	}
 
 	#search-button,
 	#report-button {
 		height: 35px;
 		padding: 0 20px;
+		margin-bottom: 5px;
 	}
 
 	.login-container input,
@@ -822,6 +825,7 @@ th {
 			border-width: 0 1.5px 1.5px 0;
 		}
 }
+
 
 @media (min-width: 601px) {
 	#search-results table colgroup col:nth-child(1) {
